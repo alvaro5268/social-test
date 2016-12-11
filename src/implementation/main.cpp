@@ -4,6 +4,11 @@
 #include <iostream> // cout
 #include <set> // cout
 #include "../headers/Auxiliar.h"
+#include "../headers/User.h"
+#include "../headers/UserComparator.h"
+
+
+
 
 
 int main(void)
@@ -24,7 +29,7 @@ int main(void)
     char * line = NULL;
 
     // Set for insert and count the users.
-    std::set<std::string> setNames;
+    std::set<User,UserComparator> setUser;
 
     while ((read = getline(&line, &lengthLine, fileDescriptor)) != -1) {
         //std::cout << "current line:" << line;
@@ -37,15 +42,18 @@ int main(void)
         nameRight = Auxiliar::splitNames(line,0);
 
         // Conversion char* to String.
-        std::string s1(nameLeft);
-        std::string s2(nameRight);
+        std::string stringNameLeft(nameLeft);
+        std::string stringNameRight(nameRight);
 
-        setNames.insert(s1);
-        setNames.insert(s2);        
+        User userLeft(stringNameLeft);
+        User userRight(stringNameRight);
+
+        setUser.insert(userLeft);
+        setUser.insert(userRight);        
               
     }
 
-    int setSize = setNames.size();
+    int setSize = setUser.size();
     std::cout<< "the total size is: " << setSize << std::endl; 
 
     // Close File.
