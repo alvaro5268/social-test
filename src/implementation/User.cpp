@@ -28,20 +28,52 @@ std::string User::getName()
 std::set<std::string>* User::getFriends()
 {
 	return this->friends;
+}        //std::set<User>::iterator result = setUser.find(User(nameLeft));
+
+int User::getFriendsSize(){
+
+	return this->friends->size();
+
+}
+  
+
+void User::insert(std::string friendName)
+{
+	this->friends->insert(friendName);
+
 }
 
+bool User::operator()(User* const& userLeft,  User* const& userRight)
+{
+	return userLeft->name < userRight->name;
+}
+
+
 // Print all attributes of the User.
+// TODO: REMOVE COMMENTS.
 std::string User::toString()
 {
-	std::string name(this->name);
-	std::string out = name ;    
+
+	//std::cout<< "User::toString->Name." << std::endl;		
+	//std::cout<< this->name << std::endl;		
+	//std::cout<< "User::toString->List of friends." << std::endl;
+	std::string out = "name: " + this->name + "\n";
+	std::string out += "friends: " ;
+
+	std::set<std::string>::iterator it;	
+    for (it= (this->friends)->begin(); it != (this->friends)->end(); ++it ){
+	    //std::cout << (*it) << std::endl;
+	    out += "["
+	    out += (*it);
+	    out += "] "
+
+    }
+	//std::cout<< "User::toString()->END List of friends." << std::endl;	
+
 	return out;
 }
 
-bool User::operator()(const User& userLeft, const User& userRight)
-{
-	return userLeft.name < userRight.name;
-}
+
 
 
 

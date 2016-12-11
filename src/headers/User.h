@@ -7,8 +7,8 @@
 
 class User
 {
-
-public:
+	
+private:
 
 	// User name.
 	std::string name;
@@ -26,15 +26,22 @@ public:
 	// Construct with name.
 	User(std::string); 	
 
+	std::string getName();
+    
     std::set<std::string>* getFriends();
 
-	std::string getName();
+    // Get the set friends. 
+    int getFriendsSize();
+
+
+	void insert(std::string friendName);
+
 
 	// print all attributes of the User.
 	std::string toString();
 
 	// Function for comparate 2 users by name.	
-	bool operator()(const User& userLeft, const User& userRight);
+	bool operator()(User* const& userLeft,  User* const& userRight);
 
 
 };

@@ -5,6 +5,7 @@
 #include <set> // cout
 #include "../headers/Auxiliar.h"
 #include "../headers/User.h"
+#include "../headers/StoreUsers.h"
 
 
 
@@ -25,83 +26,68 @@ int main(void)
 
     size_t lengthLine = 0;
     ssize_t read;
+
     // Store one line of de input.
     char * line = NULL;
 
-    // Set for insert and count the users.
-    std::set<User,User> setUser;
+    // Insert and count the users.
+    StoreUsers storeUsers;
+    
+    int counter = 1;
 
-    //int counter = 1;
-
+    // While lines of file input...
     while ((read = getline(&line, &lengthLine, fileDescriptor)) != -1) {
         char * nameLeft ;
         char * nameRight ;
-
-        // extract left name in a line of file input.
+        
+        // Extract left name in a line of file input.
         nameLeft = Auxiliar::splitNames(line,1);
-        // extract right name in a line of file input.      
+        // Extract right name in a line of file input.      
         nameRight = Auxiliar::splitNames(line,0);
 
         // Conversion char* to String.
         std::string stringNameLeft(nameLeft);
         std::string stringNameRight(nameRight);
 
-        // Create users with name.
-        User userLeft(stringNameLeft);
-        User userRight(stringNameRight);
+        // Find users retrieved.
+        User* userLeft = storeUsers.find(stringNameLeft);
+        User* userRight = storeUsers.find(stringNameRight);
 
-        // Insert users in a set.
-        setUser.insert(userLeft);
-        setUser.insert(userRight);
+        // If the user retrieved does not exist...
+        if (userLeft == NULL){
+            // Create user.
+            userLeft = new User(stringNameLeft);
+            // Insert user.
+            storeUsers.insert(userLeft);
+            storeUsers.setNUsers();
 
-        // Find user left in the set.
-        std::set<User>::iterator result = setUser.find(User(nameLeft));
+        }      
 
-        // Iterator for user.friends.
-        std::set<std::string>* friends = (*result).friends;
+        // If the user retrieved does not exist...
+        if(userRight == NULL){
+            userRight = new User(stringNameRight);
+            storeUsers.insert(userRight);
+            storeUsers.setNUsers();
 
+        }
 
-        // Add friend in the list of user friends.
-        friends->insert(stringNameRight);
+        // Add the friends for every user.
+        userLeft->insert(stringNameRight);
+        userRight->insert(stringNameLeft);
 
-
-        
+            
         //Debug
-        /*if (counter == 2)
-            break;
-        counter++;
-        */
+        //if (counter == 2)
+        //    break;
+        //counter++;
+        
         
     }
 
-    std::set<User>::iterator result = setUser.find(User("MYLES_JEFFCOAT"));
-
-    if (result == setUser.end())
-        std::cout << "User not found" <<std::endl;
-
-    else{
-        std::set<std::string>* friends = (*result).friends;
-
-        std::cout << "Name find: " <<(*result).name << std::endl; 
-        
-        std::cout << "List of friends" << std::endl;       
-        
-      
-        std::set<std::string>::iterator it;
-        for(it=(*friends).begin(); it!=(*friends).end();++it) {
-            std::cout<< " f: " <<*it << " " << std::endl;
-        }   
-        //std::cout << "nFriends: " << friends->size() <<endl;
-
-  
-    }       
-
-
-
-
-    int setSize = setUser.size();
-    std::cout<< "the total size is: " << setSize << std::endl; 
-
+    storeUsers.toString();
+    std::cout << "size std::set: " << storeUsers.size() <<std::endl;
+    std::cout << "size manual: " << storeUsers.getNUsers() <<std::endl;
+       
     // Close File.
     fclose(fileDescriptor);
 
