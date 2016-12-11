@@ -4,6 +4,11 @@
 
 
 // Constructor.
+User::User(){
+
+}
+
+
 User::User(std::string name) 
 {
 	this->name = name;
@@ -16,6 +21,11 @@ std::string User::getName()
 }
 
 
+std::set<std::string> User::getFriends()
+{
+	return this->friends;
+}
+
 // Print all attributes of the User.
 std::string User::toString()
 {
@@ -24,8 +34,10 @@ std::string User::toString()
 	return out;
 }
 
-bool User::UserComparator::operator()(const User& userLeft, const User& userRight)
+bool User::operator()(const User& userLeft, const User& userRight)
 {
 	return userLeft.name < userRight.name;
 }
+
+
 

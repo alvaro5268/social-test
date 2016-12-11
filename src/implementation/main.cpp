@@ -13,6 +13,7 @@
 int main(void)
 {
 
+
     FILE * fileDescriptor;
     // Open file.
     fileDescriptor = fopen("../input/SocialNetwork.txt", "r");
@@ -28,10 +29,11 @@ int main(void)
     char * line = NULL;
 
     // Set for insert and count the users.
-    std::set<User,User::UserComparator> setUser;
+    std::set<User,User> setUser;
+
+    //int counter = 1;
 
     while ((read = getline(&line, &lengthLine, fileDescriptor)) != -1) {
-        //std::cout << "current line:" << line;
         char * nameLeft ;
         char * nameRight ;
 
@@ -44,13 +46,57 @@ int main(void)
         std::string stringNameLeft(nameLeft);
         std::string stringNameRight(nameRight);
 
+        // Create users with name.
         User userLeft(stringNameLeft);
         User userRight(stringNameRight);
 
+        // Insert users in a set.
         setUser.insert(userLeft);
-        setUser.insert(userRight);        
+        setUser.insert(userRight);
+
+        // Find user left in the set.
+        std::set<User>::iterator result = setUser.find(User(nameLeft));
+
+        // Iterator for user.friends.
+        std::set<std::string> friends;
+        friends = (*result).friends;
+
+        // Add friend in the list of user friends.
+        friends.insert(stringNameRight);
+
+
+        
+        /* //Debug
+        if (counter == 2)
+            break;
+        counter++;
+        */
+        
+
         
     }
+
+    std::set<User>::iterator result = setUser.find(User("MYLES_JEFFCOAT"));
+
+    if (result == setUser.end())
+        std::cout << "User not found" <<std::endl;
+    else{
+        std::set<std::string> friends;
+        friends = (*result).friends;
+
+        std::cout << "Name find: " <<(*result).name << std::endl; 
+        
+        std::cout << "List of friends" << std::endl;       
+        
+        std::set<std::string>::iterator it;
+        
+        for(it=friends.begin(); it!=friends.end();++it) {
+            std::cout<< " f: " <<*it << " " << std::endl;
+        }   
+    }       
+
+
+
 
     int setSize = setUser.size();
     std::cout<< "the total size is: " << setSize << std::endl; 
@@ -61,4 +107,5 @@ int main(void)
     if (line)
     	// Getline() called to malloc() with line.
         free(line);
+
 }

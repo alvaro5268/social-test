@@ -4,36 +4,37 @@
 #include <iostream> // cout
 #include <string> // toString()
 #include <set> // set
-//#include "UserComparator.h"
 
 class User
 {
 
-private:
+public:
 
 	// User name.
 	std::string name;
 
+    // List the friends of user..
+	std::set<std::string> friends;
+
 	
 public:
 
+
+	// Default constructor.
+	User(); 	
+
 	// Construct with name.
 	User(std::string); 	
+
+    std::set<std::string> getFriends();
 
 	std::string getName();
 
 	// print all attributes of the User.
 	std::string toString();
 
-	// Class for Compare users by name.
-	class UserComparator
-	{
-
-	public:
-
-	// Function for comparate 2 users by name.
-		bool operator()(const User& userLeft, const User& userRight);
-	};
+	// Function for comparate 2 users by name.	
+	bool operator()(const User& userLeft, const User& userRight);
 
 
 };
