@@ -7,10 +7,13 @@
 
 #include "../headers/User.h"
 
+// Class for Compare users by name.
 class UserComparator
 {
 public:
-    bool operator()(const User& userLeft, const User& userRight);
+
+	// Function for comparate 2 users by name.
+	bool operator()(const User& userLeft, const User& userRight);
 };
 
 #endif

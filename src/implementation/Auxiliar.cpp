@@ -3,7 +3,7 @@
 
 #include "../headers/Auxiliar.h"
 
-// Split the names in the input file.
+// Split the lines of the input file for obtain two names per line.
 char * Auxiliar::splitNames(char *pairUsers, bool isLeft)
 {
 	// Split the char* when find "\n" or ","

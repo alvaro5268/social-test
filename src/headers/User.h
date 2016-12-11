@@ -7,32 +7,23 @@
 
 class User
 {
-	public:
-		
-		// User name.
-		std::string name;
-				
+
+public:
+
+	// User name.
+	std::string name;
+
 	
-	public:
+public:
 
-		// Construct with name.
-      	User(std::string); 	
-		
-		std::string getName();
-		
-		// print all attributes of the User.
-		std::string toString();
+	// Construct with name.
+	User(std::string); 	
 
-/*
-      	// Override comparation, now by name.
-		bool operator==(User user);
+	std::string getName();
 
-      	// Override <, by aplhabetical order.
-		bool operator<(User user);	
+	// print all attributes of the User.
+	std::string toString();
 
-      	// Override >, by aplhabetical order.
-		bool operator>(User user);			
-*/
 };
 
 

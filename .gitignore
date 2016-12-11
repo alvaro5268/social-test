@@ -1,0 +1,10 @@
+## Ignore ##
+
+# Object files
+*.o
+
+# Executable files
+*.out
+
+# Compiled ghc
+*.ghc

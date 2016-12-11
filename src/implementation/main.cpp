@@ -50,7 +50,7 @@ int main(void)
 
         setUser.insert(userLeft);
         setUser.insert(userRight);        
-              
+        
     }
 
     int setSize = setUser.size();
