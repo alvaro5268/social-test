@@ -58,21 +58,19 @@ int main(void)
         std::set<User>::iterator result = setUser.find(User(nameLeft));
 
         // Iterator for user.friends.
-        std::set<std::string> friends;
-        friends = (*result).friends;
+        std::set<std::string>* friends = (*result).friends;
+
 
         // Add friend in the list of user friends.
-        friends.insert(stringNameRight);
+        friends->insert(stringNameRight);
 
 
         
-        /* //Debug
-        if (counter == 2)
+        //Debug
+        /*if (counter == 2)
             break;
         counter++;
         */
-        
-
         
     }
 
@@ -80,19 +78,22 @@ int main(void)
 
     if (result == setUser.end())
         std::cout << "User not found" <<std::endl;
+
     else{
-        std::set<std::string> friends;
-        friends = (*result).friends;
+        std::set<std::string>* friends = (*result).friends;
 
         std::cout << "Name find: " <<(*result).name << std::endl; 
         
         std::cout << "List of friends" << std::endl;       
         
+      
         std::set<std::string>::iterator it;
-        
-        for(it=friends.begin(); it!=friends.end();++it) {
+        for(it=(*friends).begin(); it!=(*friends).end();++it) {
             std::cout<< " f: " <<*it << " " << std::endl;
         }   
+        //std::cout << "nFriends: " << friends->size() <<endl;
+
+  
     }       
 
 

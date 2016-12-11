@@ -12,7 +12,11 @@ User::User(){
 User::User(std::string name) 
 {
 	this->name = name;
+	this->friends = new std::set<std::string>;
+
 }
+
+//TODO: CREATE DESTRUCTOR FOR FREE FRIENDS.
 
 
 std::string User::getName()
@@ -21,7 +25,7 @@ std::string User::getName()
 }
 
 
-std::set<std::string> User::getFriends()
+std::set<std::string>* User::getFriends()
 {
 	return this->friends;
 }

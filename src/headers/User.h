@@ -14,7 +14,7 @@ public:
 	std::string name;
 
     // List the friends of user..
-	std::set<std::string> friends;
+	std::set<std::string>* friends;
 
 	
 public:
@@ -26,7 +26,7 @@ public:
 	// Construct with name.
 	User(std::string); 	
 
-    std::set<std::string> getFriends();
+    std::set<std::string>* getFriends();
 
 	std::string getName();
 
