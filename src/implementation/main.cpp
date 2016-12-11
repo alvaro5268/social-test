@@ -5,7 +5,6 @@
 #include <set> // cout
 #include "../headers/Auxiliar.h"
 #include "../headers/User.h"
-#include "../headers/UserComparator.h"
 
 
 
@@ -29,7 +28,7 @@ int main(void)
     char * line = NULL;
 
     // Set for insert and count the users.
-    std::set<User,UserComparator> setUser;
+    std::set<User,User::UserComparator> setUser;
 
     while ((read = getline(&line, &lengthLine, fileDescriptor)) != -1) {
         //std::cout << "current line:" << line;

@@ -24,4 +24,8 @@ std::string User::toString()
 	return out;
 }
 
+bool User::UserComparator::operator()(const User& userLeft, const User& userRight)
+{
+	return userLeft.name < userRight.name;
+}
 

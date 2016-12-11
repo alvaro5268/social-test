@@ -2,7 +2,8 @@
 #define AUXILIAR_H
 
 // Class with Auxiliar functions.
-class Auxiliar{
+class Auxiliar
+{
 
 public:
 

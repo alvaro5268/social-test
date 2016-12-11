@@ -4,11 +4,12 @@
 #include <iostream> // cout
 #include <string> // toString()
 #include <set> // set
+//#include "UserComparator.h"
 
 class User
 {
 
-public:
+private:
 
 	// User name.
 	std::string name;
@@ -23,6 +24,17 @@ public:
 
 	// print all attributes of the User.
 	std::string toString();
+
+	// Class for Compare users by name.
+	class UserComparator
+	{
+
+	public:
+
+	// Function for comparate 2 users by name.
+		bool operator()(const User& userLeft, const User& userRight);
+	};
+
 
 };
 
