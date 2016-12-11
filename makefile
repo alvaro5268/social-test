@@ -12,11 +12,14 @@
 # g++ --enable-checking -g -O0  -v -da -Q
 
 
-SocialNetwork.out: main.o  User.o StoreUsers.o Auxiliar.o
-	g++ -g  -o bin/SocialNetwork.out build/main.o  build/User.o build/StoreUsers.o build/Auxiliar.o 
+SocialNetwork.out: main.o DistanceUsers.o User.o StoreUsers.o Auxiliar.o
+	g++ -g  -o bin/SocialNetwork.out build/main.o  build/DistanceUsers.o build/User.o build/StoreUsers.o build/Auxiliar.o 
 
 main.o: src/implementation/main.cpp
 	g++ -g   -o build/main.o -c src/implementation/main.cpp
+
+DistanceUsers.o: src/implementation/DistanceUsers.cpp src/headers/DistanceUsers.h 
+	g++ -g  -o build/DistanceUsers.o -c src/implementation/DistanceUsers.cpp	
 
 StoreUsers.o: src/implementation/StoreUsers.cpp src/headers/StoreUsers.h 
 	g++ -g  -o build/StoreUsers.o -c src/implementation/StoreUsers.cpp
@@ -28,7 +31,7 @@ Auxiliar.o: src/implementation/Auxiliar.cpp src/headers/Auxiliar.h
 	g++ -g  -o build/Auxiliar.o -c src/implementation/Auxiliar.cpp
 
 clean:
-	rm bin/SocialNetwork.out build/main.o  build/User.o StoreUsers.o build/Auxiliar.o      
+	rm bin/SocialNetwork.out build/main.o  build/DistanceUsers.o build/User.o StoreUsers.o build/Auxiliar.o      
 
 
 

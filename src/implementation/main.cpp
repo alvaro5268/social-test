@@ -1,11 +1,9 @@
 #include <stdio.h>  // fopen
 #include <stdlib.h>	// free, exit
-#include <string.h> // strtok
-#include <iostream> // cout
-#include <set> // cout
 #include "../headers/Auxiliar.h"
 #include "../headers/User.h"
 #include "../headers/StoreUsers.h"
+#include "../headers/DistanceUsers.h"
 
 
 int main(void)
@@ -79,7 +77,6 @@ int main(void)
         //    break;
         //counter++;
         
-        
     }
 
     
@@ -88,6 +85,11 @@ int main(void)
     //std::cout << storeUsers.toString() <<std::endl;
     storeUsers.toString();
 
+    User* user1 = storeUsers.find("MYLES_JEFFCOAT");
+    User* user2 = storeUsers.find("LANNY_TIBURCIO");
+
+    // Calculate distance between two peers.
+    DistanceUsers distance(user1,user2);
 
     //FIXME: CHECK.
     // storeUsers is an automatic variable, will be destroyed

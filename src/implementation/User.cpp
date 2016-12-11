@@ -1,4 +1,3 @@
-#include <string> // toString()
 #include "../headers/User.h"
 #include "../headers/Auxiliar.h"
 
@@ -49,7 +48,7 @@ long User::getNFriends()
 }
   
 
-void User::insert(User* _friend)
+void User::insert(User* &_friend)
 {
 	// Avoid that one user could be his own friend.
 	if (_friend->name != this->name)

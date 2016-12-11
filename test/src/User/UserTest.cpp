@@ -39,29 +39,6 @@ class UserTest
 			assert (! assert);
 		}	
 
-		/*
-
-		void addFriendTrue()
-		{
-		 	std::string nameUser1 = "U1";
-		 	std::string nameUser2 = "U2";
-		 	
-		 	User user1(nameUser1);
-		 	User user2(nameUser2);
-
-		 	user1.addFriend(&user2);
-		 	std::set<User*> friends1 = user1.getFriends(); 
-
- 			std::set<User*>::iterator it;
-
-			for (it = friends1.begin(); it != friends1.end(); ++it){
-			    bool assert = strcmp((*it)->getName(),nameUser2) == 0;
-			    assert(assert);
-			}
-
-
-		}
-	*/
 		void compareUserTrue(){
 			std::string name1 = "name1";
 			std::string name2 = "name1";
@@ -145,9 +122,6 @@ int main(){
 	test.compareLessFalse();
 	test.compareGreaterTrue();
 	test.compareGreaterFalse();	
-	//test.addFriendTrue();
-
-
 
 	return 0;
 }

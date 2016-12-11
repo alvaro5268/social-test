@@ -1,7 +1,7 @@
-#include <string> // toString()
 #include "../headers/StoreUsers.h"
 
 // Constructor.
+// TODO: CREATE AS SINGLETON.
 StoreUsers::StoreUsers(){
 	this->users = new std::set<User*,User> ;
 	this->nUsers = 0;
@@ -43,14 +43,14 @@ void StoreUsers::setNUsers()
 }
 
 // Insert an user.
-void StoreUsers::insert(User* user){
+void StoreUsers::insert(User* &user){
 
 	this->users->insert(user);
 
 }
 
 // Insert an friends.
-void StoreUsers::insert(User* user,User* _friend)
+void StoreUsers::insert(User* &user,User* &_friend)
 {
 	user->insert(_friend);
 }    

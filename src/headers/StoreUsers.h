@@ -35,10 +35,10 @@ public:
 	long size();
 
 	// Insert an User.
-	void insert(User* user);
+	void insert(User* &user);
 
 	// Find the list of friends by user name.
-	void insert(User* user, User* _friend);
+	void insert(User* &user, User* &_friend);
 
 	// Find an User by name.
     User* find(std::string name);

@@ -1,5 +1,5 @@
 #include <iostream> // cout
-#include <string.h> // strcmp
+#include <string.h> // strtok
 
 #include "../headers/Auxiliar.h"
 

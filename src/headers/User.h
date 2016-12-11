@@ -37,7 +37,7 @@ public:
     long getNFriends();
 
 
-	void insert(User* _friend);
+	void insert(User* &_friend);
 
 
 	// print all attributes of the User.
