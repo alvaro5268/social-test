@@ -17,7 +17,11 @@ private:
 
 public:
 
+	// Constructor.
 	StoreUsers();
+
+	// Destructor.
+	~StoreUsers();
 
     // Return set with all User.
 	std::set<User*,User>* getUsers();
@@ -34,13 +38,13 @@ public:
 	void insert(User* user);
 
 	// Find the list of friends by user name.
-	void insert(User* user, std::string friendName);
+	void insert(User* user, User* _friend);
 
 	// Find an User by name.
     User* find(std::string name);
 
 	// Find the list of friends by user name.
-    std::set<std::string>* findFriends(std::string name); 
+    std::set<User*,User>* findFriends(std::string name); 
 
 
 	// print all attributes of the User.

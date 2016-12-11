@@ -7,7 +7,21 @@ StoreUsers::StoreUsers(){
 	this->nUsers = 0;
 }
 
-//FIXME: CREATE DESTRUCTOR FOR FREE FRIENDS.
+StoreUsers::~StoreUsers()
+{
+	
+	std::set<User*,User>* users =  this->users;
+	std::set<User*,User>::iterator it;
+
+	// FIXME: CHECK
+	/*for( it = users->begin(); it!=users->end(); ++it) {
+		if (it != users->end())
+			delete *it;
+	}*/
+	
+	delete this->users;  	
+}
+
 
 std::set<User*,User>* StoreUsers::getUsers()
 {
@@ -28,62 +42,70 @@ void StoreUsers::setNUsers()
 	this->nUsers++;
 }
 
+// Insert an user.
 void StoreUsers::insert(User* user){
 
 	this->users->insert(user);
 
 }
 
-void StoreUsers::insert(User* user,std::string friendName)
+// Insert an friends.
+void StoreUsers::insert(User* user,User* _friend)
 {
-	user->insert(friendName);
+	user->insert(_friend);
 }    
 
 
 User* StoreUsers::find(std::string name)
 {
 	User user(name);
-    std::set<User*,User>::iterator result = this->users->find(&user);
+	std::set<User*,User>::iterator result = this->users->find(&user);
 	
-    
-    if (result == this->users->end())
-    	return NULL;
 
-    User* userPointer = *result;
-    
-    return userPointer;
-    
+	if (result == this->users->end())
+		return NULL;
+
+	User* userPointer = *result;
+
+	return userPointer;
+
 }
 
-std::set<std::string>* StoreUsers::findFriends(std::string name)
+std::set<User*,User>* StoreUsers::findFriends(std::string name)
 {
 	User* user = this->find(name);
 
-    return user->getFriends();
+	return user->getFriends();
 }
 
 
 
 // Print all attributes of the User.
+// TODO: Delete comments.
+// FIXME: Return the real string.
 std::string StoreUsers::toString()
 {
-	//std::cout<< "StoreUsers::toString()->List of store users." << std::endl;	
-	// Retrieve set. std::set<User,User> 
+	std::cout<< "StoreUsers::toString()->List of store users." << std::endl;	
 	std::set<User*,User>* users =  this->users;
-    std::set<User*,User>::iterator it;
+	std::set<User*,User>::iterator it;
 
-    int currSize = 0;
-    int maxSize = 0;
-
+	//int currSize = 0;
+	//int maxSize = 0;
+	std::string out = "";
 	for( it = users->begin(); it!=users->end(); ++it) {
 	    //(*it)->toString();	
-	    currSize = (*it)->getFriendsSize();
+		//out += "User :";
+		//out += (*it)->toString();
+		(*it)->toString();
+	    // Count the size of every user friend list.
+		//currSize = (*it)->getNFriends();
+		//if (currSize >= maxSize)
+		//	maxSize = currSize;
+		//out += "\n";		
+	}  	
 
-    	if (currSize >= maxSize)
-    		maxSize = currSize;
-    }  	
-
-    //std::cout <<"La lista mas grande ocupa: "<< maxSize <<std::endl;
+    //std::cout <<"The most friend size is : "<< maxSize <<std::endl;
+	//return out;
 	return "";
 }
 

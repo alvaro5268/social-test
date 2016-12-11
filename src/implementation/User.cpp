@@ -4,7 +4,8 @@
 
 
 // Constructor.
-User::User(){
+User::User()
+{
 
 }
 
@@ -12,11 +13,23 @@ User::User(){
 User::User(std::string name) 
 {
 	this->name = name;
-	this->friends = new std::set<std::string>;
-
+	this->friends = new std::set<User*,User>;
 }
 
-//TODO: CREATE DESTRUCTOR FOR FREE FRIENDS.
+User::~User()
+{
+
+	std::set<User*,User>* users =  this->friends;
+	std::set<User*,User>::iterator it;
+
+	// FIXME: CHECK
+	/*for( it = users->begin(); it!=users->end(); ++it) {
+		if (it != users->end())
+			delete *it;
+	}*/
+
+	delete this->friends;
+}
 
 
 std::string User::getName()
@@ -25,22 +38,23 @@ std::string User::getName()
 }
 
 
-std::set<std::string>* User::getFriends()
+std::set<User*,User>* User::getFriends()
 {
 	return this->friends;
 }        //std::set<User>::iterator result = setUser.find(User(nameLeft));
 
-int User::getFriendsSize(){
-
+long User::getNFriends()
+{
 	return this->friends->size();
-
 }
   
 
-void User::insert(std::string friendName)
+void User::insert(User* _friend)
 {
-	this->friends->insert(friendName);
-
+	// Avoid that one user could be his own friend.
+	if (_friend->name != this->name)
+		this->friends->insert(_friend);
+	
 }
 
 bool User::operator()(User* const& userLeft,  User* const& userRight)
@@ -50,27 +64,26 @@ bool User::operator()(User* const& userLeft,  User* const& userRight)
 
 
 // Print all attributes of the User.
-// TODO: REMOVE COMMENTS.
+// FIXME: Return the real string.
 std::string User::toString()
 {
+	std::cout << "name: " << this->name << std::endl;
+	std::cout << "friends: ["<< std::endl;
 
-	//std::cout<< "User::toString->Name." << std::endl;		
-	//std::cout<< this->name << std::endl;		
-	//std::cout<< "User::toString->List of friends." << std::endl;
-	std::string out = "name: " + this->name + "\n";
-	std::string out += "friends: " ;
+	//std::string out = "name: " + this->name + "\n";
+	//out += " friends: [" ;
 
-	std::set<std::string>::iterator it;	
+	std::set<User*,User>::iterator it;	
     for (it= (this->friends)->begin(); it != (this->friends)->end(); ++it ){
-	    //std::cout << (*it) << std::endl;
-	    out += "["
-	    out += (*it);
-	    out += "] "
+	    std::cout << (*it)->getName() << std::endl;
+	    //out += (*it)->getName();
 
     }
-	//std::cout<< "User::toString()->END List of friends." << std::endl;	
+	std::cout << "]" << std::endl;
+	std::cout <<"Total: " << this->getNFriends() << std::endl;
 
-	return out;
+	//return out;
+	return "";
 }
 
 

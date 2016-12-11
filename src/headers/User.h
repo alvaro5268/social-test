@@ -14,27 +14,30 @@ private:
 	std::string name;
 
     // List the friends of user..
-	std::set<std::string>* friends;
+	std::set<User*,User>* friends;
 
 	
 public:
 
 
 	// Default constructor.
-	User(); 	
+	User();
+
+	// Destructor for free friends.
+	~User(); 	
 
 	// Construct with name.
 	User(std::string); 	
 
 	std::string getName();
     
-    std::set<std::string>* getFriends();
+    std::set<User*,User>* getFriends();
 
     // Get the set friends. 
-    int getFriendsSize();
+    long getNFriends();
 
 
-	void insert(std::string friendName);
+	void insert(User* _friend);
 
 
 	// print all attributes of the User.

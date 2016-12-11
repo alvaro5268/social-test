@@ -8,9 +8,6 @@
 #include "../headers/StoreUsers.h"
 
 
-
-
-
 int main(void)
 {
 
@@ -33,7 +30,8 @@ int main(void)
     // Insert and count the users.
     StoreUsers storeUsers;
     
-    int counter = 1;
+    //Debug
+    //int counter = 1;
 
     // While lines of file input...
     while ((read = getline(&line, &lengthLine, fileDescriptor)) != -1) {
@@ -72,22 +70,30 @@ int main(void)
         }
 
         // Add the friends for every user.
-        userLeft->insert(stringNameRight);
-        userRight->insert(stringNameLeft);
+        userLeft->insert(userRight);
+        userRight->insert(userLeft);
 
             
         //Debug
-        //if (counter == 2)
+        //if (counter == 3)
         //    break;
         //counter++;
         
         
     }
 
-    storeUsers.toString();
+    
     std::cout << "size std::set: " << storeUsers.size() <<std::endl;
     std::cout << "size manual: " << storeUsers.getNUsers() <<std::endl;
-       
+    //std::cout << storeUsers.toString() <<std::endl;
+    storeUsers.toString();
+
+
+    //FIXME: CHECK.
+    // storeUsers is an automatic variable, will be destroyed
+    // at finish of execution and will call to ~storeUsers()
+    // that after will call to ~Users()
+    
     // Close File.
     fclose(fileDescriptor);
 
