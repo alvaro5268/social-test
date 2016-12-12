@@ -27,22 +27,21 @@ long DistanceUsers::calculate (User* user1, User* user2)
 	//std::cout<<"nameTarget: "<<nameTarget<<std::endl;
 	//std::cout<<"nameStart: "<<nameStart<<std::endl;
 
-	std::set<User*,User>::iterator it;
 
-	int VOA = -1 ;
-
+	std::set<User*,User> visited;
+	
 	std::queue<User*> queueUsers;
 	std::queue<int> queueLevels;	
 
-	std::set<User*,User> visited;
+	std::set<User*,User>::iterator it;
+	
+	int solutionLevel = -1 ;
 	bool isEnd = false;
 	int level = 0;
-
-	visited.insert(user2);
 	
 	queueUsers.push(user2);
 	queueLevels.push(level);
-
+	visited.insert(user2);
 	// while ! empty queueUsers
 	while (! queueUsers.empty() && ! isEnd){
 		//std::cout << "Queue front: " << queueUsers.front()->getName() << std::endl;
@@ -60,41 +59,39 @@ long DistanceUsers::calculate (User* user1, User* user2)
     	level++;
 		//std::cout << "level IS :" << level << std::endl;    	    
 
-		for( it = frontUserFriends->begin(); it!=frontUserFriends->end(); ++it) {
-			std::cout << "Current :" << (*it)->getName() << std::endl;
+		it = frontUserFriends->begin();
+
+    	while (it != frontUserFriends->end() && ! isEnd){
+			//std::cout << "Current :" << (*it)->getName() << std::endl;
 			std::string nameCurrent = (*it)->getName();
 
 			std::set<User*,User>::iterator iteratorVisited = visited.find(*it);
 			
 			// if Visited...
-			if (iteratorVisited != visited.end()){
-				std::cout << "Node visited: " << (*iteratorVisited)->getName() << std::endl;
-				continue;			
+			if (iteratorVisited == visited.end()){
+				//std::cout << "Node visited: " << (*iteratorVisited)->getName() << std::endl;
+				visited.insert(*it);
+				queueUsers.push(*it);
+				queueLevels.push(level);	
+
+				// If its a solution.
+				if (nameCurrent == nameTarget){
+					//std::cout << "Names coincidence :" << (*it)->getName() << std::endl;			
+					// Store the level.
+					solutionLevel = level;
+					// Mark for finish the execution
+					isEnd = true;
+				}
 			}
 
-			
-			visited.insert(*it);
-			queueUsers.push(*it);
-			queueLevels.push(level);	
+			++it;
 
-			// If its a solution.
-			if (nameCurrent == nameTarget){
-				std::cout << "Names coincidence :" << (*it)->getName() << std::endl;			
-				// Store the level.
-				VOA = level;
-				// Mark for finish the execution
-				isEnd = true;
-				break;		
-			}
+		} // while
 
-
-		} // for
-
-		//std::cout << "Visite todos friends of :" << frontUser->getName() << "or find solution"<< std::endl;
 	} // while
 
-	//std::cout << "La distncia encontrada es: " << VOA << std::endl;
-	return VOA;
+	//std::cout << "La distncia encontrada es: " << solutionLevel << std::endl;
+	return solutionLevel;
 }
 
 
