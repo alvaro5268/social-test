@@ -17,7 +17,7 @@ User::User(std::string name)
 	this->name = name;
 
 	// Allocate memory for the pointer of User in friends.
-	// FIXME: This memory will be deleted by class "StoreUsers".
+	// TODO: This memory will be deleted by class "StoreUsers".
 	this->friends = new std::set<User*,User>;
 }
 
@@ -56,12 +56,8 @@ bool User::operator()(User* const& userLeft,  User* const& userRight)
 
 
 // Print all attributes of the User.
-// FIXME: Return the real string.
 std::string User::toString()
 {
-	//std::cout << "name: " << this->name << std::endl;
-	//std::cout << "friends: ["<< std::endl;
-
 	std::string out = "name: " + this->name + "\n";
 	out += " friends: [" ;
 
@@ -72,9 +68,6 @@ std::string User::toString()
 
     }
 	out += "]" ;
-
-	//std::cout << "]" << std::endl;
-	//std::cout <<"Total: " << this->getNFriends() << std::endl;
 
 	return out;
 }

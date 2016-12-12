@@ -146,37 +146,23 @@ std::set<User*,User>* StoreUsers::findFriends(std::string name)
 
 
 // Print all attributes of the User.
-// TODO: Delete comments.
 std::string StoreUsers::toString()
 {
 	
-	//std::cout<< "StoreUsers::toString()->List of store users." << std::endl;	
 	std::set<User*,User>* users;
 	std::set<User*,User>::iterator it;
-	//int currSize = 0;
-	//int maxSize = 0;
+
 	std::string out = "";
 	for (int i = 0; i < MAX_TABLE; ++i)
 	{
 		users = this->users[i];
 	
 		for( it = users->begin(); it!=users->end(); ++it) {
-			    //(*it)->toString();	
 				out += "User :";
-				out += (*it)->toString();
-				//(*it)->toString();
-			    // Count the size of every user friend list.
-				//currSize = (*it)->getNFriends();
-				//if (currSize >= maxSize)
-				//	maxSize = currSize;
-				//out += "\n";		
+				out += (*it)->toString();	
 			}  	
-
-
-
 	}
 	
-    //std::cout <<"The most friend size is : "<< maxSize <<std::endl;
 	return out;
 	
 }

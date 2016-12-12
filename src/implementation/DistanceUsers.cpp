@@ -105,6 +105,7 @@ long int DistanceUsers::calculate (User* user1, User* user2)
 				}
 			}
 
+			// Point to the next User.
 			++it;
 
 		} // while
