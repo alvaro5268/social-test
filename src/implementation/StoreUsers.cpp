@@ -15,19 +15,30 @@ StoreUsers::StoreUsers(){
 }
 
 
-// FIXME
 StoreUsers::~StoreUsers()
 {
-	
-    /*
-    std::set<User*,User>* users =  storeUsers.getUsers();
-    std::set<User*,User>::iterator it;
-    std::set<User*,User>::iterator it2;
-    for( it = users->begin(); it!=users->end(); ++it) {
-		delete (*it); // Call to ~User();
-    }
-	*/
-	//delete this->users;  	
+
+	// For every position of the table.
+	for (int i = 0; i < MAX_TABLE; ++i)
+	{
+		// Retrieve the set of users.
+		std::set<User*,User>* users =  this->users[i];
+		std::set<User*,User>::iterator it ;
+
+		// For every user in the set.
+		for (it = users->begin(); it!=users->end(); ++it){
+			// Clean the list of friends.
+			(*it)->getFriends()->clear();
+			// Delete the memory allocated with new 
+			// when we create the list of friends.
+			delete (*it)->getFriends();
+			// Call the destructor of user.
+			delete (*it);
+		}
+
+		// Delete the std::set allocated in the constructor.
+		delete this->users[i];  	
+	}
 }
 
 

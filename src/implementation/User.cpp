@@ -13,19 +13,12 @@ User::User()
 
 User::User(std::string name) 
 {
+	// User name.
 	this->name = name;
+
+	// This memory will be deleted by class "StoreUsers".
 	this->friends = new std::set<User*,User>;
 }
-
-
-// FIXME: The destructor can not be active because
-// when any automatic set is destroyed call
-// this function and we have segmentation fault.
-/*User::~User()
-{
-	//delete this->friends;
-}
-*/
 
 
 std::string User::getName()
@@ -37,7 +30,7 @@ std::string User::getName()
 std::set<User*,User>* User::getFriends()
 {
 	return this->friends;
-}        //std::set<User>::iterator result = setUser.find(User(nameLeft));
+}
 
 long User::getNFriends()
 {

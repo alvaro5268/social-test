@@ -30,9 +30,6 @@ int main(void)
 
     // Insert and count the users.
     StoreUsers storeUsers;
-    
-    //Debug
-    //int counter = 1;
 
     // While lines of file input...
     User* userLeft;
@@ -61,7 +58,6 @@ int main(void)
             // Insert user.
             storeUsers.insert(userLeft);
             storeUsers.setNUsers();
-
         }      
 
         // If the user retrieved does not exist...
@@ -69,28 +65,18 @@ int main(void)
             userRight = new User(stringNameRight);
             storeUsers.insert(userRight);
             storeUsers.setNUsers();
-
         }
 
         // Add the friends for every user.
         userLeft->insert(userRight);
         userRight->insert(userLeft);
-
-
-        //Debug
-        //if (counter == 3)
-        //    break;
-        //counter++;
         
     }
 
     // Close File.
     fclose(fileDescriptor);
     
-    //std::cout << "size std::set: " << storeUsers.size() <<std::endl;
     std::cout << "There are: " << storeUsers.getNUsers() <<" different ussers in SocialNetwork.txt."<<std::endl;
-    //std::cout << storeUsers.toString() <<std::endl;
-    //storeUsers.toString();
 
     User* user1 = storeUsers.find("STACEY_STRIMPLE");
     User* user2 = storeUsers.find("RICH_OMLI");
@@ -99,13 +85,6 @@ int main(void)
     DistanceUsers distanceUser;
     long int nTies = distanceUser.calculate(user1,user2);
     std::cout << "The number of ties between STACEY_STRIMPLE and RICH_OMLI is: " << nTies << std::endl;
-
-
-
-    //FIXME: CHECK.
-    // storeUsers is an automatic variable, will be destroyed
-    // at finish of execution and will call to ~storeUsers()
-    // that after will call to ~Users()
 
     if (line)
         // Getline() called to malloc() with line.
