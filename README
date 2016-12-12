@@ -1,1 +1,23 @@
-Read and process data since an input file.
+Count the number of persons in the file "SocialNetwork.txt" and calculate the distance between STACEY_STRIMPLE and RICH_OMLI.
+
+Instructions for execute the program:
+1 - Clone or download the project.
+2 - Execute the script file called "scriptExecuteSocialNetwork" in the project root folder ("social-test-master").
+This script have 2 instructions: 
+ - "make" for compile the program (/build) and generate one executable (/bin).
+ - "./bin/SocialNetwork.out" for run the executable generated.
+3 - When the program finsih, it shows by console the number of different users in the input file and the distance between the users STACEY_STRIMPLE and RICH_OMLI.
+
+Folder structure.
+// social-test-master: root folder
+	// bin: executable files (.out).
+	// build: object files (.o).
+	// input: input files (.txt).
+	// src: soruce code.
+		// headers: headers files (.h).
+		// implementation: source files (.cpp).
+	// test: root folder for test
+		// bin: executable test files (.out).
+		// build: object test sfiles (.o).
+		// input: input test files 
+		// src: sourcee test files

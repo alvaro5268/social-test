@@ -1,8 +1,8 @@
 #ifndef USER_H // Guard for avoid double inclusion.
 #define USER_H
 
-#include <string> // toString()
-#include <set> // set
+#include <string> // std::string
+#include <set> // std::set
 
 class User
 {

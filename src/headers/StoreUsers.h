@@ -1,7 +1,7 @@
 #ifndef STORE_USERS_H // Guard for avoid double inclusion.
 #define STORE_USERS_H
-#include <string> // toString()
-#include <set> // set
+#include <string> // std::string
+#include <set> // std::set
 
 #include "User.h"
 
