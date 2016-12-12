@@ -22,7 +22,7 @@ public:
 	// Default constructor.
 	User();
 
-	// Destructor for free friends.
+	// FIXME: Destructor for free friends.
 	//~User();
 
 	// Construct with name.

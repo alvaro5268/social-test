@@ -9,7 +9,10 @@ class DistanceUsers
 	
 public:
 
+	// Default and empty constructor
 	DistanceUsers ();
+
+	// Calculate distance between user 1 and user 2.
 	long int calculate(User* user1, User* user2);
 
 };

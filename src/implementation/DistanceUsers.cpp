@@ -8,7 +8,7 @@
 
 
 
-// Default Constructor.
+// Calculate distance between user 1 and user 2.
 DistanceUsers::DistanceUsers ()
 {
 
@@ -23,6 +23,10 @@ long int DistanceUsers::calculate (User* user1, User* user2)
 
 	// Set user 2 how start point in the search.
 	std::string nameStart = user2->getName();
+	
+	// Distance cero between one user and him-self
+	if (nameTarget == nameStart)
+		return 0;
 
 	//std::cout<<"nameTarget: "<<nameTarget<<std::endl;
 	//std::cout<<"nameStart: "<<nameStart<<std::endl;

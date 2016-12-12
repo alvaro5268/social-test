@@ -132,12 +132,22 @@ int main(){
 	char test3[] = "../../input/test3.txt";
 	long expectedOutcome3 = 3;
 	std::string nameTarget3 = "USER_1";
-	std::string nameStart3 = "USER_7";	
+	std::string nameStart3 = "USER_7";
 
-	test.testDistance(test3, expectedOutcome3, nameTarget3, nameStart3);	
+	std::cout << "Running test4" << std::endl;	
+	char test4[] = "../../input/test4.txt";
+	long expectedOutcome4 = 4;
+	std::string nameTarget4 = "USER_1";
+	std::string nameStart4 = "USER_5";	
+
+	std::cout << "Running test5" << std::endl;	
+	char test5[] = "../../input/test4.txt";
+	long expectedOutcome5 = 0;
+	std::string nameTarget5 = "USER_1";
+	std::string nameStart5 = "USER_1";			
+
+	test.testDistance(test5, expectedOutcome5, nameTarget5, nameStart5);	
 	
-
-
 	return 0;
 }
 

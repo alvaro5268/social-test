@@ -20,16 +20,12 @@ User::User(std::string name)
 
 // FIXME: The destructor can not be active because
 // when any automatic set is destroyed call
-// this function and we lost all the information.
+// this function and we have segmentation fault.
 /*User::~User()
 {
-
-	//std::cout<< "Destroyin" << std::endl;
-	//std::set<User*,User>* users =  this->friends;
-	//std::set<User*,User>::iterator it;
-
 	//delete this->friends;
-}*/
+}
+*/
 
 
 std::string User::getName()

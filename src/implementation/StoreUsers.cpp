@@ -19,26 +19,11 @@ StoreUsers::~StoreUsers()
     std::set<User*,User>::iterator it;
     std::set<User*,User>::iterator it2;
     for( it = users->begin(); it!=users->end(); ++it) {
-        if (it != users->end()){        
-            for( it2 = (*it)->getFriends()->begin(); it2 !=(*it)->getFriends()->end(); ++it2) {
-                if (it2 != (*it)->getFriends()->end()){
-                    delete (*it2);
-                }
-            }
-        }
+		delete (*it); // Call to ~User();
     }
 	*/
 	delete this->users;  	
 }
-
-/*
-	for( it = users->begin(); it!=users->end(); ++it) {
-		if (it != users->end())
-			delete (*it)->getFriends();
-			// delete (*it)
-	}
-*/
-
 
 
 std::set<User*,User>* StoreUsers::getUsers()
@@ -55,6 +40,7 @@ long int StoreUsers::getNUsers()
 	return this->nUsers;
 }
 
+// Add one in the users counter.
 void StoreUsers::setNUsers()
 {
 	this->nUsers++;
@@ -73,7 +59,7 @@ void StoreUsers::insert(User* &user,User* &_friend)
 	user->insert(_friend);
 }    
 
-
+// Find an user by name.
 User* StoreUsers::find(std::string name)
 {
 	User user(name);
@@ -89,6 +75,7 @@ User* StoreUsers::find(std::string name)
 
 }
 
+// Return the list of friends of a User by name.
 std::set<User*,User>* StoreUsers::findFriends(std::string name)
 {
 	User* user = this->find(name);

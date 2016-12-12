@@ -107,7 +107,6 @@ int main(void)
     // at finish of execution and will call to ~storeUsers()
     // that after will call to ~Users()
 
-
     if (line)
         // Getline() called to malloc() with line.
         free(line);
