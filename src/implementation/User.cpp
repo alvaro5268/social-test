@@ -1,3 +1,5 @@
+#include <iostream> // cout
+
 #include "../headers/User.h"
 #include "../headers/Auxiliar.h"
 
@@ -15,6 +17,8 @@ User::User(std::string name)
 	this->friends = new std::set<User*,User>;
 }
 
+/*
+// FIXME
 User::~User()
 {
 
@@ -22,14 +26,14 @@ User::~User()
 	std::set<User*,User>::iterator it;
 
 	// FIXME: CHECK
-	/*for( it = users->begin(); it!=users->end(); ++it) {
-		if (it != users->end())
-			delete *it;
-	}*/
+	//for( it = users->begin(); it!=users->end(); ++it) {
+	//	if (it != users->end())
+	//		delete *it;
+	//}
 
 	delete this->friends;
 }
-
+*/
 
 std::string User::getName()
 {

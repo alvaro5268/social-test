@@ -1,3 +1,5 @@
+#include <iostream> // cout
+
 #include "../headers/StoreUsers.h"
 
 // Constructor.
@@ -7,6 +9,8 @@ StoreUsers::StoreUsers(){
 	this->nUsers = 0;
 }
 
+/*
+// FIXME
 StoreUsers::~StoreUsers()
 {
 	
@@ -14,13 +18,14 @@ StoreUsers::~StoreUsers()
 	std::set<User*,User>::iterator it;
 
 	// FIXME: CHECK
-	/*for( it = users->begin(); it!=users->end(); ++it) {
-		if (it != users->end())
-			delete *it;
-	}*/
+	//for( it = users->begin(); it!=users->end(); ++it) {
+	//	if (it != users->end())
+	//		delete *it;
+	//}
 	
 	delete this->users;  	
 }
+*/
 
 
 std::set<User*,User>* StoreUsers::getUsers()

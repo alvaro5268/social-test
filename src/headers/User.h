@@ -1,7 +1,6 @@
 #ifndef USER_H // Guard for avoid double inclusion.
 #define USER_H
 
-#include <iostream> // cout
 #include <string> // toString()
 #include <set> // set
 
@@ -24,7 +23,7 @@ public:
 	User();
 
 	// Destructor for free friends.
-	~User(); 	
+	//~User(); 	
 
 	// Construct with name.
 	User(std::string); 	

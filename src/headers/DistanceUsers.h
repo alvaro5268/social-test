@@ -9,7 +9,8 @@ class DistanceUsers
 	
 public:
 
-	DistanceUsers (User* user1, User* user2);
+	DistanceUsers ();
+	long calculate(User* user1, User* user2);
 
 };
 

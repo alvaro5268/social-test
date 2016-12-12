@@ -1,5 +1,8 @@
 #include <stdio.h>  // fopen
 #include <stdlib.h>	// free, exit
+#include <string>
+#include <iostream> // cout
+
 #include "../headers/Auxiliar.h"
 #include "../headers/User.h"
 #include "../headers/StoreUsers.h"
@@ -12,7 +15,7 @@ int main(void)
 
     FILE * fileDescriptor;
     // Open file.
-    fileDescriptor = fopen("../input/SocialNetwork.txt", "r");
+    fileDescriptor = fopen("../input/mini.txt", "r");
     if (fileDescriptor == NULL){
         std::cout << "File not found" << std::endl;
     	// Finish execution.
@@ -83,13 +86,15 @@ int main(void)
     std::cout << "size std::set: " << storeUsers.size() <<std::endl;
     std::cout << "size manual: " << storeUsers.getNUsers() <<std::endl;
     //std::cout << storeUsers.toString() <<std::endl;
-    storeUsers.toString();
+    //storeUsers.toString();
 
     User* user1 = storeUsers.find("MYLES_JEFFCOAT");
     User* user2 = storeUsers.find("LANNY_TIBURCIO");
 
     // Calculate distance between two peers.
-    DistanceUsers distance(user1,user2);
+    DistanceUsers distanceUser;
+    distanceUser.calculate(user1,user2);
+
 
     //FIXME: CHECK.
     // storeUsers is an automatic variable, will be destroyed

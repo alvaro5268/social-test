@@ -21,7 +21,7 @@ public:
 	StoreUsers();
 
 	// Destructor.
-	~StoreUsers();
+	//~StoreUsers();
 
     // Return set with all User.
 	std::set<User*,User>* getUsers();
