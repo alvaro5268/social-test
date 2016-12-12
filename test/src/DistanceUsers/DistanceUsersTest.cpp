@@ -92,11 +92,6 @@ class DistanceUserTest
 		    // Close File.
 		    fclose(fileDescriptor);
 		    
-		    std::cout << "size std::set: " << storeUsers.size() <<std::endl;
-		    std::cout << "size manual: " << storeUsers.getNUsers() <<std::endl;
-		    //std::cout << storeUsers.toString() <<std::endl;
-		    //storeUsers.toString();
-
 		    User* user1 = storeUsers.find(nameTarget);
 		    User* user2 = storeUsers.find(nameStart);
 
@@ -105,7 +100,7 @@ class DistanceUserTest
 		    long distanceCalculated = distanceUser.calculate(user1,user2);
 		 	bool assert = (expectedOutcome == distanceCalculated);
 
-			//assert (assert);
+			assert (assert);
 		}
 
 
@@ -116,25 +111,26 @@ int main(){
 
 	DistanceUserTest test;
 	
-	/*
+	
 	char test1[] = "../../input/test1.txt";
-	long expectedOutcome1 = 0;
+	long expectedOutcome1 = 1;
 	std::string nameTarget1 = "MYLES_JEFFCOAT";
 	std::string nameStart1 = "LANNY_TIBURCIO";	
+	std::cout << "Running test1" << std::endl;
 	test.testDistance(test1, expectedOutcome1, nameTarget1, nameStart1);
-	*/
+	
 
-	/*
+	std::cout << "Running test2" << std::endl;	
 	char test2[] = "../../input/test2.txt";
 	long expectedOutcome2 = -1;
 	std::string nameTarget2 = "MYLES_JEFFCOAT";
 	std::string nameStart2 = "USER_3";	
 
 	test.testDistance(test2, expectedOutcome2, nameTarget2, nameStart2);	
-	*/
 	
+	std::cout << "Running test3" << std::endl;	
 	char test3[] = "../../input/test3.txt";
-	long expectedOutcome3 = -1;
+	long expectedOutcome3 = 3;
 	std::string nameTarget3 = "USER_1";
 	std::string nameStart3 = "USER_7";	
 
