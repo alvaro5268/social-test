@@ -3,14 +3,11 @@
 
 #include "User.h"
 
-
+// Class for calculate the distance between two Users.
 class DistanceUsers
 {
 	
 public:
-
-	// Default and empty constructor
-	DistanceUsers ();
 
 	// Calculate distance between user 1 and user 2.
 	long int calculate(User* user1, User* user2);

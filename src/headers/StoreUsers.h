@@ -5,7 +5,8 @@
 
 #include "User.h"
 
-
+// Class for store all users of the social network.
+// Provide functions for insert users and get the total of Users.
 class StoreUsers
 {
 
@@ -25,7 +26,6 @@ public:
 	// Destructor.
 	~StoreUsers();
 
-    // Return set with all User.
 	std::set<User*,User>** getUsers();
 	
 	long int getNUsers();
@@ -34,6 +34,7 @@ public:
 	// Add 1 to nUsers.
 	void setNUsers();
 
+	// Calculate a hash number from a string.
 	long int hash(std::string name);	
 
 	// Return the size of a set in the table.
@@ -51,13 +52,11 @@ public:
 	// Find the list of friends by user name.
     std::set<User*,User>* findFriends(std::string name); 
 
-
 	// print all attributes of the User.
 	std::string toString();
 
 
 
 };
-
 
 #endif

@@ -2,7 +2,7 @@ Count the number of persons in the file "SocialNetwork.txt" and calculate the di
 
 Instructions for execute the program:
 1 - Clone or download the project.
-2 - Execute the script file called "scriptExecuteSocialNetwork" in the project root folder ("social-test-master").
+2 - Execute the script file called "scriptExecuteSocialNetwork" (with "./"). The file is placed in the  root folder ("social-test-master").
 This script have 2 instructions: 
  - "make" for compile the program (/build) and generate one executable (/bin).
  - "./bin/SocialNetwork.out" for run the executable generated.

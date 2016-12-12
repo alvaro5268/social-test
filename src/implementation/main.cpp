@@ -76,7 +76,7 @@ int main(void)
     // Close File.
     fclose(fileDescriptor);
     
-    std::cout << "There are: " << storeUsers.getNUsers() <<" different ussers in SocialNetwork.txt."<<std::endl;
+    std::cout << "There are: " << storeUsers.getNUsers() <<" different ussers in the file SocialNetwork.txt."<<std::endl;
 
     User* user1 = storeUsers.find("STACEY_STRIMPLE");
     User* user2 = storeUsers.find("RICH_OMLI");

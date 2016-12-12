@@ -10,12 +10,12 @@
 #include "../../../src/headers/DistanceUsers.h"
 
 
-//TODO NAME VARIABLES
 class DistanceUserTest
 {
 
 	public:
 
+		//TODO Create method for read the file and return the set of users.
 		void testDistance(char * nameFile,long expectedOutcome, std::string nameTarget, std::string nameStart)
 		{
 
@@ -38,8 +38,6 @@ class DistanceUserTest
 		    // Insert and count the users.
 		    StoreUsers storeUsers;
 		    
-		    //Debug
-		    //int counter = 1;
 
 		    // While lines of file input...
 		    while ((read = getline(&line, &lengthLine, fileDescriptor)) != -1) {
@@ -80,12 +78,6 @@ class DistanceUserTest
 		        // Add the friends for every user.
 		        userLeft->insert(userRight);
 		        userRight->insert(userLeft);
-
-		            
-		        //Debug
-		        //if (counter == 3)
-		        //    break;
-		        //counter++;
 		        
 		    }
 

@@ -4,7 +4,7 @@
 #include "../headers/Auxiliar.h"
 
 
-// Constructor.
+// Constructor empty and default.
 User::User()
 {
 
@@ -16,7 +16,8 @@ User::User(std::string name)
 	// User name.
 	this->name = name;
 
-	// This memory will be deleted by class "StoreUsers".
+	// Allocate memory for the pointer of User in friends.
+	// FIXME: This memory will be deleted by class "StoreUsers".
 	this->friends = new std::set<User*,User>;
 }
 
@@ -46,6 +47,8 @@ void User::insert(User* &_friend)
 	
 }
 
+// Operator that allow compare two users by name. 
+// Useful for std::set can compare pointers to user.
 bool User::operator()(User* const& userLeft,  User* const& userRight)
 {
 	return userLeft->name < userRight->name;
@@ -56,23 +59,24 @@ bool User::operator()(User* const& userLeft,  User* const& userRight)
 // FIXME: Return the real string.
 std::string User::toString()
 {
-	std::cout << "name: " << this->name << std::endl;
-	std::cout << "friends: ["<< std::endl;
+	//std::cout << "name: " << this->name << std::endl;
+	//std::cout << "friends: ["<< std::endl;
 
-	//std::string out = "name: " + this->name + "\n";
-	//out += " friends: [" ;
+	std::string out = "name: " + this->name + "\n";
+	out += " friends: [" ;
 
 	std::set<User*,User>::iterator it;	
     for (it= (this->friends)->begin(); it != (this->friends)->end(); ++it ){
-	    std::cout << (*it)->getName() << std::endl;
-	    //out += (*it)->getName();
+	    //std::cout << (*it)->getName() << std::endl;
+	    out += (*it)->getName();
 
     }
-	std::cout << "]" << std::endl;
-	std::cout <<"Total: " << this->getNFriends() << std::endl;
+	out += "]" ;
 
-	//return out;
-	return "";
+	//std::cout << "]" << std::endl;
+	//std::cout <<"Total: " << this->getNFriends() << std::endl;
+
+	return out;
 }
 
 

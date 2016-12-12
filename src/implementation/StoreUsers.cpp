@@ -47,8 +47,12 @@ std::set<User*,User>** StoreUsers::getUsers()
 	return this->users;
 }
 
-long int StoreUsers::bucketSize(std::string name){
+long int StoreUsers::bucketSize(std::string name)
+{
+	
 	int long hash = this->hash(name);
+	
+	// Retrieve the set in the position "hash".
 	std::set<User*,User>* bucket = this->users[hash];
 
 	return bucket->size();
@@ -65,6 +69,8 @@ void StoreUsers::setNUsers()
 	this->nUsers++;
 }
 
+// Hash function for calculate an integer from
+// string doing use of the ascii code of the string.
 long int StoreUsers::hash(std::string name)
 {
 	int addAscii = 0;
@@ -86,11 +92,16 @@ long int StoreUsers::hash(std::string name)
 
 
 // Insert an user.
-void StoreUsers::insert(User* &user){
+void StoreUsers::insert(User* &user)
+{
 
 	std::string name = user->getName();
+	
 	int long hash = this->hash(name);
+
+	// Retrieve the set in the position "hash".	
 	std::set<User*,User>* bucket = this->users[hash];
+	
 	bucket->insert(user);
 
 }
@@ -101,18 +112,23 @@ void StoreUsers::insert(User* &user,User* &_friend)
 	user->insert(_friend);
 }    
 
-// Find an user by name.
+// Find an user by name return NULL if the User is not found.
 User* StoreUsers::find(std::string name)
 {
 	User user(name);
+
 	int long hash = this->hash(name);
+
+	// Retrieve the set in the position "hash".
 	std::set<User*,User>* bucket = this->users[hash];
+
 	std::set<User*,User>::iterator result = bucket->find(&user);
 	
-
+	// If the user is not found.
 	if (result == bucket->end())
 		return NULL;
 
+	// If the user is found.
 	User* userPointer = *result;
 
 	return userPointer;
@@ -131,33 +147,38 @@ std::set<User*,User>* StoreUsers::findFriends(std::string name)
 
 // Print all attributes of the User.
 // TODO: Delete comments.
-// FIXME: Return the real string.
 std::string StoreUsers::toString()
 {
-	/*
-	std::cout<< "StoreUsers::toString()->List of store users." << std::endl;	
-	std::set<User*,User>* users =  this->users;
+	
+	//std::cout<< "StoreUsers::toString()->List of store users." << std::endl;	
+	std::set<User*,User>* users;
 	std::set<User*,User>::iterator it;
-
 	//int currSize = 0;
 	//int maxSize = 0;
 	std::string out = "";
-	for( it = users->begin(); it!=users->end(); ++it) {
-	    //(*it)->toString();	
-		//out += "User :";
-		//out += (*it)->toString();
-		(*it)->toString();
-	    // Count the size of every user friend list.
-		//currSize = (*it)->getNFriends();
-		//if (currSize >= maxSize)
-		//	maxSize = currSize;
-		//out += "\n";		
-	}  	
+	for (int i = 0; i < MAX_TABLE; ++i)
+	{
+		users = this->users[i];
+	
+		for( it = users->begin(); it!=users->end(); ++it) {
+			    //(*it)->toString();	
+				out += "User :";
+				out += (*it)->toString();
+				//(*it)->toString();
+			    // Count the size of every user friend list.
+				//currSize = (*it)->getNFriends();
+				//if (currSize >= maxSize)
+				//	maxSize = currSize;
+				//out += "\n";		
+			}  	
 
+
+
+	}
+	
     //std::cout <<"The most friend size is : "<< maxSize <<std::endl;
-	//return out;
-	return "";
-	*/
+	return out;
+	
 }
 
 

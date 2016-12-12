@@ -4,6 +4,7 @@
 #include <string> // std::string
 #include <set> // std::set
 
+// Store an user and his list of friends.
 class User
 {
 	
@@ -12,7 +13,7 @@ private:
 	// User name.
 	std::string name;
 
-    // List the friends of user..
+    // Friends of the User.
 	std::set<User*,User>* friends;
 
 	
@@ -29,19 +30,17 @@ public:
     
     std::set<User*,User>* getFriends();
 
-    // Get the set friends. 
+    // Get number of User friends. 
     long int getNFriends();
 
-
+    // Insert friend.
 	void insert(User* &_friend);
-
-
-	// print all attributes of the User.
-	std::string toString();
 
 	// Function for comparate 2 users by name.	
 	bool operator()(User* const& userLeft,  User* const& userRight);
 
+	// Print all attributes of the User.
+	std::string toString();
 
 };
 
