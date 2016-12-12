@@ -15,7 +15,7 @@ DistanceUsers::DistanceUsers ()
 }
 
 // TODO: Comment and delete cout.
-long DistanceUsers::calculate (User* user1, User* user2)
+long int DistanceUsers::calculate (User* user1, User* user2)
 {
 
 	// Set user 1 as target.

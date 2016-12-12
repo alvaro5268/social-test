@@ -13,7 +13,7 @@ private:
 
     // List the friends of user..
 	std::set<User*,User>* users;
-	long nUsers;
+	long int nUsers;
 
 public:
 
@@ -26,13 +26,13 @@ public:
     // Return set with all User.
 	std::set<User*,User>* getUsers();
 	
-	long getNUsers();
+	long int getNUsers();
 
 	// Add 1 to nUsers.
 	void setNUsers();
 
 	// Return total users.
-	long size();
+	long int size();
 
 	// Insert an User.
 	void insert(User* &user);

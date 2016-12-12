@@ -33,11 +33,11 @@ std::set<User*,User>* StoreUsers::getUsers()
 	return this->users;
 }
 
-long StoreUsers::size(){
+long int StoreUsers::size(){
 	return this->users->size();
 }
 
-long StoreUsers::getNUsers()
+long int StoreUsers::getNUsers()
 {
 	return this->nUsers;
 }

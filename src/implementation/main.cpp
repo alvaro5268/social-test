@@ -86,16 +86,18 @@ int main(void)
     fclose(fileDescriptor);
     
     //std::cout << "size std::set: " << storeUsers.size() <<std::endl;
-    //std::cout << "size manual: " << storeUsers.getNUsers() <<std::endl;
+    std::cout << "There are: " << storeUsers.getNUsers() <<" different ussers in SocialNetwork.txt."<<std::endl;
     //std::cout << storeUsers.toString() <<std::endl;
-    storeUsers.toString();
+    //storeUsers.toString();
 
-    User* user1 = storeUsers.find("MYLES_JEFFCOAT");
-    User* user2 = storeUsers.find("LANNY_TIBURCIO");
+    User* user1 = storeUsers.find("STACEY_STRIMPLE");
+    User* user2 = storeUsers.find("RICH_OMLI");
 
     // Calculate distance between two peers.
     DistanceUsers distanceUser;
-    distanceUser.calculate(user1,user2);
+    long int nTies = distanceUser.calculate(user1,user2);
+    std::cout << "The number of ties between STACEY_STRIMPLE and RICH_OMLI is: " << nTies << std::endl;
+
 
 
     //FIXME: CHECK.

@@ -33,7 +33,7 @@ public:
     std::set<User*,User>* getFriends();
 
     // Get the set friends. 
-    long getNFriends();
+    long int getNFriends();
 
 
 	void insert(User* &_friend);
