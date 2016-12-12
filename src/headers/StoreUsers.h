@@ -11,8 +11,10 @@ class StoreUsers
 
 private:
 
-    // List the friends of user..
-	std::set<User*,User>* users;
+    // List the friends of user.
+    // 82178 is the number of different user.
+    static const long int MAX_TABLE = 82178;
+	std::set<User*,User>* users[MAX_TABLE];
 	long int nUsers;
 
 public:
@@ -24,15 +26,18 @@ public:
 	~StoreUsers();
 
     // Return set with all User.
-	std::set<User*,User>* getUsers();
+	std::set<User*,User>** getUsers();
 	
 	long int getNUsers();
+
 
 	// Add 1 to nUsers.
 	void setNUsers();
 
-	// Return total users.
-	long int size();
+	long int hash(std::string name);	
+
+	// Return the size of a set in the table.
+	long int bucketSize(std::string name);
 
 	// Insert an User.
 	void insert(User* &user);

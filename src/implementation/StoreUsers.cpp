@@ -5,7 +5,12 @@
 // Constructor.
 // TODO: CREATE AS SINGLETON.
 StoreUsers::StoreUsers(){
-	this->users = new std::set<User*,User> ;
+	
+	for (int i = 0; i < MAX_TABLE; ++i)
+	{
+		this->users[i] = new std::set<User*,User> ;
+	}
+
 	this->nUsers = 0;
 }
 
@@ -22,17 +27,20 @@ StoreUsers::~StoreUsers()
 		delete (*it); // Call to ~User();
     }
 	*/
-	delete this->users;  	
+	//delete this->users;  	
 }
 
 
-std::set<User*,User>* StoreUsers::getUsers()
+std::set<User*,User>** StoreUsers::getUsers()
 {
 	return this->users;
 }
 
-long int StoreUsers::size(){
-	return this->users->size();
+long int StoreUsers::bucketSize(std::string name){
+	int long hash = this->hash(name);
+	std::set<User*,User>* bucket = this->users[hash];
+
+	return bucket->size();
 }
 
 long int StoreUsers::getNUsers()
@@ -46,10 +54,33 @@ void StoreUsers::setNUsers()
 	this->nUsers++;
 }
 
+long int StoreUsers::hash(std::string name)
+{
+	int addAscii = 0;
+	int nameLength = name.length();
+
+	// Iterate over the string.
+	for (int i=0; i<nameLength;i++){
+		// 37 is prime
+		addAscii = (addAscii * 37 + name[i]);
+	}
+	// Adjust to the size of the table.
+	addAscii = addAscii % MAX_TABLE;
+	
+	if (addAscii < 0) 
+		addAscii = addAscii + MAX_TABLE;
+
+	return addAscii ;
+}	
+
+
 // Insert an user.
 void StoreUsers::insert(User* &user){
 
-	this->users->insert(user);
+	std::string name = user->getName();
+	int long hash = this->hash(name);
+	std::set<User*,User>* bucket = this->users[hash];
+	bucket->insert(user);
 
 }
 
@@ -63,10 +94,12 @@ void StoreUsers::insert(User* &user,User* &_friend)
 User* StoreUsers::find(std::string name)
 {
 	User user(name);
-	std::set<User*,User>::iterator result = this->users->find(&user);
+	int long hash = this->hash(name);
+	std::set<User*,User>* bucket = this->users[hash];
+	std::set<User*,User>::iterator result = bucket->find(&user);
 	
 
-	if (result == this->users->end())
+	if (result == bucket->end())
 		return NULL;
 
 	User* userPointer = *result;
@@ -90,6 +123,7 @@ std::set<User*,User>* StoreUsers::findFriends(std::string name)
 // FIXME: Return the real string.
 std::string StoreUsers::toString()
 {
+	/*
 	std::cout<< "StoreUsers::toString()->List of store users." << std::endl;	
 	std::set<User*,User>* users =  this->users;
 	std::set<User*,User>::iterator it;
@@ -112,6 +146,7 @@ std::string StoreUsers::toString()
     //std::cout <<"The most friend size is : "<< maxSize <<std::endl;
 	//return out;
 	return "";
+	*/
 }
 
 
