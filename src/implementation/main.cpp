@@ -15,7 +15,7 @@ int main(void)
 
     FILE * fileDescriptor;
     // Open file.
-    fileDescriptor = fopen("../input/mini.txt", "r");
+    fileDescriptor = fopen("input/mini.txt", "r");
     if (fileDescriptor == NULL){
         std::cout << "File not found" << std::endl;
     	// Finish execution.
@@ -82,6 +82,8 @@ int main(void)
         
     }
 
+    // Close File.
+    fclose(fileDescriptor);
     
     std::cout << "size std::set: " << storeUsers.size() <<std::endl;
     std::cout << "size manual: " << storeUsers.getNUsers() <<std::endl;
@@ -101,8 +103,6 @@ int main(void)
     // at finish of execution and will call to ~storeUsers()
     // that after will call to ~Users()
     
-    // Close File.
-    fclose(fileDescriptor);
 
     if (line)
     	// Getline() called to malloc() with line.
