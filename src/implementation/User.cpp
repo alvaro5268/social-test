@@ -17,23 +17,20 @@ User::User(std::string name)
 	this->friends = new std::set<User*,User>;
 }
 
-/*
-// FIXME
-User::~User()
+
+// FIXME: The destructor can not be active because
+// when any automatic set is destroyed call
+// this function and we lost all the information.
+/*User::~User()
 {
 
-	std::set<User*,User>* users =  this->friends;
-	std::set<User*,User>::iterator it;
+	//std::cout<< "Destroyin" << std::endl;
+	//std::set<User*,User>* users =  this->friends;
+	//std::set<User*,User>::iterator it;
 
-	// FIXME: CHECK
-	//for( it = users->begin(); it!=users->end(); ++it) {
-	//	if (it != users->end())
-	//		delete *it;
-	//}
+	//delete this->friends;
+}*/
 
-	delete this->friends;
-}
-*/
 
 std::string User::getName()
 {

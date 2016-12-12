@@ -23,7 +23,7 @@ public:
 	User();
 
 	// Destructor for free friends.
-	//~User(); 	
+	//~User();
 
 	// Construct with name.
 	User(std::string); 	

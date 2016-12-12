@@ -35,9 +35,11 @@ int main(void)
     //int counter = 1;
 
     // While lines of file input...
+    User* userLeft;
+    User* userRight;
+    char * nameLeft ;
+    char * nameRight ;
     while ((read = getline(&line, &lengthLine, fileDescriptor)) != -1) {
-        char * nameLeft ;
-        char * nameRight ;
         
         // Extract left name in a line of file input.
         nameLeft = Auxiliar::splitNames(line,1);
@@ -49,8 +51,8 @@ int main(void)
         std::string stringNameRight(nameRight);
 
         // Find users retrieved.
-        User* userLeft = storeUsers.find(stringNameLeft);
-        User* userRight = storeUsers.find(stringNameRight);
+        userLeft = storeUsers.find(stringNameLeft);
+        userRight = storeUsers.find(stringNameRight);
 
         // If the user retrieved does not exist...
         if (userLeft == NULL){
@@ -104,7 +106,7 @@ int main(void)
     // storeUsers is an automatic variable, will be destroyed
     // at finish of execution and will call to ~storeUsers()
     // that after will call to ~Users()
-    
+
 
     if (line)
         // Getline() called to malloc() with line.

@@ -9,23 +9,36 @@ StoreUsers::StoreUsers(){
 	this->nUsers = 0;
 }
 
-/*
+
 // FIXME
 StoreUsers::~StoreUsers()
 {
 	
-	std::set<User*,User>* users =  this->users;
-	std::set<User*,User>::iterator it;
-
-	// FIXME: CHECK
-	//for( it = users->begin(); it!=users->end(); ++it) {
-	//	if (it != users->end())
-	//		delete *it;
-	//}
-	
+    /*
+    std::set<User*,User>* users =  storeUsers.getUsers();
+    std::set<User*,User>::iterator it;
+    std::set<User*,User>::iterator it2;
+    for( it = users->begin(); it!=users->end(); ++it) {
+        if (it != users->end()){        
+            for( it2 = (*it)->getFriends()->begin(); it2 !=(*it)->getFriends()->end(); ++it2) {
+                if (it2 != (*it)->getFriends()->end()){
+                    delete (*it2);
+                }
+            }
+        }
+    }
+	*/
 	delete this->users;  	
 }
+
+/*
+	for( it = users->begin(); it!=users->end(); ++it) {
+		if (it != users->end())
+			delete (*it)->getFriends();
+			// delete (*it)
+	}
 */
+
 
 
 std::set<User*,User>* StoreUsers::getUsers()
