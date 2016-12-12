@@ -7,7 +7,7 @@
 char * Auxiliar::splitNames(char *pairUsers, bool isLeft)
 {
 	// Split the char* when find "\n" or ","
-	const char delimiter[] = "\n ,";
+	const char delimiter[] = "\n , \r";
 	if(isLeft){
 		// return left side of "," in input file.
 		return strtok(pairUsers, delimiter);

@@ -1,7 +1,7 @@
 #include <stdio.h>  // fopen
-#include <stdlib.h>	// free, exit
-#include <string>
-#include <iostream> // cout
+#include <stdlib.h> // free, exit
+#include <string>   // std::string
+#include <iostream> // std::cout
 
 #include "../headers/Auxiliar.h"
 #include "../headers/User.h"
@@ -15,10 +15,10 @@ int main(void)
 
     FILE * fileDescriptor;
     // Open file.
-    fileDescriptor = fopen("input/mini.txt", "r");
+    fileDescriptor = fopen("input/SocialNetwork.txt", "r");
     if (fileDescriptor == NULL){
         std::cout << "File not found" << std::endl;
-    	// Finish execution.
+        // Finish execution.
         exit(EXIT_FAILURE);
     }
 
@@ -74,7 +74,7 @@ int main(void)
         userLeft->insert(userRight);
         userRight->insert(userLeft);
 
-            
+
         //Debug
         //if (counter == 3)
         //    break;
@@ -85,10 +85,10 @@ int main(void)
     // Close File.
     fclose(fileDescriptor);
     
-    std::cout << "size std::set: " << storeUsers.size() <<std::endl;
-    std::cout << "size manual: " << storeUsers.getNUsers() <<std::endl;
+    //std::cout << "size std::set: " << storeUsers.size() <<std::endl;
+    //std::cout << "size manual: " << storeUsers.getNUsers() <<std::endl;
     //std::cout << storeUsers.toString() <<std::endl;
-    //storeUsers.toString();
+    storeUsers.toString();
 
     User* user1 = storeUsers.find("MYLES_JEFFCOAT");
     User* user2 = storeUsers.find("LANNY_TIBURCIO");
@@ -105,7 +105,7 @@ int main(void)
     
 
     if (line)
-    	// Getline() called to malloc() with line.
+        // Getline() called to malloc() with line.
         free(line);
 
 }
